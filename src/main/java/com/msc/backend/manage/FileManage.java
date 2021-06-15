@@ -22,11 +22,11 @@ public class FileManage {
     @Autowired
     private TaskRepository taskRepository;
 
+    private static ArrayList<String> scanFiles = new ArrayList<String>();
+
     public ArrayList<String> scanFile(String filePath){
-        ArrayList<String> scanFiles = new ArrayList<String>();
         ArrayList<String> dirctorys = new ArrayList<String>();
         File directory = new File(filePath);
-        System.out.println(filePath);
         if(directory.isDirectory()){
             File[] filelist = directory.listFiles();
             for(int i = 0; i < filelist.length; i ++){
@@ -35,7 +35,6 @@ public class FileManage {
                     scanFile(filelist[i].getAbsolutePath());
                 }
                 else{
-                    System.out.println(filelist[i].getAbsolutePath());
                     if (filelist[i].getName().endsWith(".c")) {
                         scanFiles.add(filelist[i].getAbsolutePath());
                     }
