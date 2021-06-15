@@ -19,6 +19,7 @@ public class FileController {
     @RequestMapping("/scanFiles")
     public void scanFiles(){
         System.out.println(GeneralConfig.getFileStorageAddress());
+        System.out.println(fileManage.getClass());
         List<String> fileAddressList = fileManage.scanFile(GeneralConfig.getFileStorageAddress());
         System.out.println(fileAddressList);
         for (int i = 0; i< fileAddressList.size(); i++){
