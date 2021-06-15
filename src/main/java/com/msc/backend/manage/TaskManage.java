@@ -29,7 +29,7 @@ public class TaskManage {
     }
 
     public List<Task> getTasksByFileID(Long fileID){
-        return taskRepository.findAllByFileId(fileID);
+        return taskRepository.findAllByFileID(fileID);
     }
 
     public void createTask(Long fileId, String solver, String encode, String verificate,int k){
