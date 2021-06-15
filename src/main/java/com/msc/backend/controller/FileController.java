@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-
 public class FileController {
 
     @Autowired
@@ -19,6 +18,7 @@ public class FileController {
 
     @RequestMapping("/scanFiles")
     public void scanFiles(){
+        System.out.println(GeneralConfig.getFileStorageAddress());
         List<String> fileAddressList = fileManage.scanFile(GeneralConfig.getFileStorageAddress());
         System.out.println(fileAddressList);
         for (int i = 0; i< fileAddressList.size(); i++){
