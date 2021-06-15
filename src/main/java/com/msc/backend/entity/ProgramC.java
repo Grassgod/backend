@@ -35,6 +35,10 @@ public class ProgramC {
     @Column(name = "unknown",nullable = false)
     private int unknown= 0;
 
+    public ProgramC(){
+
+    }
+
     public ProgramC(String fileName, String fileAddress){
         super();
         this.fileName = fileName;
