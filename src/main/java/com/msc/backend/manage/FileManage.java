@@ -35,6 +35,7 @@ public class FileManage {
                     scanFile(filelist[i].getAbsolutePath());
                 }
                 else{
+                    System.out.println(filelist[i].getAbsolutePath());
                     if (filelist[i].getName().endsWith(".c")) {
                         scanFiles.add(filelist[i].getAbsolutePath());
                     }
