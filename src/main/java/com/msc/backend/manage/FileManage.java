@@ -26,6 +26,7 @@ public class FileManage {
         ArrayList<String> scanFiles = new ArrayList<String>();
         ArrayList<String> dirctorys = new ArrayList<String>();
         File directory = new File(filePath);
+        System.out.println(filePath);
         if(directory.isDirectory()){
             File[] filelist = directory.listFiles();
             for(int i = 0; i < filelist.length; i ++){
