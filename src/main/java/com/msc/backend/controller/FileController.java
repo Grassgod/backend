@@ -20,9 +20,11 @@ public class FileController {
     @RequestMapping("/scanFiles")
     public void scanFiles(){
         List<String> fileAddressList = fileManage.scanFile(GeneralConfig.getFileStorageAddress());
+        System.out.println(fileAddressList);
         for (int i = 0; i< fileAddressList.size(); i++){
             String address = fileAddressList.get(i);
             if (!fileManage.checkFileExist(FileUtils.addressToName(address), address)){
+                System.out.println(FileUtils.addressToName(address)+" "+address);
                 fileManage.createFile(FileUtils.addressToName(address), address);
             }
         }
