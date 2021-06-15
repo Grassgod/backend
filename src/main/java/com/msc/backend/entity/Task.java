@@ -37,7 +37,7 @@ public class Task {
     private double timeConsumer = 0;
 
     public Task(){
-        
+
     }
 
     public Task(Long fileID, String solver, String encode, String verificate, int k) {

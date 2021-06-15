@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@Controller
+@Controller("/task")
 public class TaskController {
 
     @Autowired
     private TaskManage taskManage;
 
     @RequestMapping(value = "/getTasksByFileID",method = RequestMethod.POST)
-    private List<Task> getTasksByFileID(@RequestParam("fileID") Long fileID){
-        return taskManage.getTasksByFileID(fileID);
+    private List<Task> getTasksByFileID(@RequestParam("fileID")String fileID){
+        return taskManage.getTasksByFileID(Long.valueOf(fileID));
     }
 }
