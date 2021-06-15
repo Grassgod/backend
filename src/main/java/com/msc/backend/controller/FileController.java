@@ -2,10 +2,14 @@ package com.msc.backend.controller;
 
 import com.msc.backend.config.GeneralConfig;
 import com.msc.backend.entity.ProgramC;
+import com.msc.backend.entity.Task;
 import com.msc.backend.manage.FileManage;
+import com.msc.backend.manage.TaskManage;
 import com.msc.backend.utils.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -15,6 +19,10 @@ public class FileController {
 
     @Autowired
     private FileManage fileManage;
+
+
+    @Autowired
+    private TaskManage taskManage;
 
     @RequestMapping("/scanFiles")
     public void scanFiles(){
@@ -39,5 +47,10 @@ public class FileController {
             System.out.println(list.get(i).getFileName());
         }
         return list;
+    }
+
+    @RequestMapping(value = "/getTasksByFileID",method = RequestMethod.POST)
+    private List<Task> getTasksByFileID(@RequestParam("fileID")String fileID){
+        return taskManage.getTasksByFileID(Long.valueOf(fileID));
     }
 }

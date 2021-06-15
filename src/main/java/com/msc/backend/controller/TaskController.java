@@ -13,11 +13,6 @@ import java.util.List;
 @Controller("/task")
 public class TaskController {
 
-    @Autowired
-    private TaskManage taskManage;
 
-    @RequestMapping(value = "/getTasksByFileID",method = RequestMethod.POST)
-    private List<Task> getTasksByFileID(@RequestParam("fileID")String fileID){
-        return taskManage.getTasksByFileID(Long.valueOf(fileID));
-    }
+
 }
