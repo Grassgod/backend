@@ -16,7 +16,7 @@ public class Task {
     private Long commandID;
 
     @Column(name = "fileID")
-    private int fileID;
+    private Long fileID;
 
     @Column(name = "solver")
     private String solver;
@@ -36,7 +36,7 @@ public class Task {
     @Column(name = "timeConsumer")
     private double timeConsumer = 0;
 
-    public Task(int fileID, String solver, String encode, String verificate, int k) {
+    public Task(Long fileID, String solver, String encode, String verificate, int k) {
         this.fileID = fileID;
         this.solver = solver;
         this.encode = encode;

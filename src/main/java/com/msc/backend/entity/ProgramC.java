@@ -11,7 +11,8 @@ public class ProgramC {
 
     @Id
     @GeneratedValue
-    private Long ID;
+    @Column(name = "fileID")
+    private Long fileID;
 
     @Column(name = "fileName")
     private String fileName;

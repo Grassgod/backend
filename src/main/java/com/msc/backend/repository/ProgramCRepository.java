@@ -6,5 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProgramCRepository extends JpaRepository<ProgramC, Long> {
+
     Boolean existsByFileName(String fileName);
+
+    ProgramC findByFileName(String fileName);
 }

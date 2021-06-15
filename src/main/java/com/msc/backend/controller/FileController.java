@@ -30,6 +30,7 @@ public class FileController {
 
     @RequestMapping("/getAllFiles")
     public void getAllFiles() {
+        scanFiles();
         List<ProgramC> list = fileManage.getAllFile();
         for (int i=0; i<list.size(); i++){
             System.out.println(list.get(i).getFileName());

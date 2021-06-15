@@ -2,6 +2,7 @@ package com.msc.backend.manage;
 
 import com.msc.backend.entity.ProgramC;
 import com.msc.backend.repository.ProgramCRepository;
+import com.msc.backend.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,12 @@ public class FileManage {
 
     @Autowired
     private ProgramCRepository programCRepository;
+
+    @Autowired
+    private TaskManage taskManage;
+
+    @Autowired
+    private TaskRepository taskRepository;
 
     public ArrayList<String> scanFile(String filePath){
         ArrayList<String> scanFiles = new ArrayList<String>();
@@ -39,6 +46,7 @@ public class FileManage {
     public void createFile(String fileName, String filePath){
         ProgramC programC = new ProgramC(fileName,filePath);
         programCRepository.save(programC);
+        taskManage.fileToTasks(programCRepository.findByFileName(fileName).getFileID(),fileName,filePath);
     }
 
     public List<ProgramC> getAllFile(){
