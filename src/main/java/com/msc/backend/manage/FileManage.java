@@ -5,8 +5,11 @@ import com.msc.backend.repository.ProgramCRepository;
 import com.msc.backend.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.msc.backend.config.GeneralConfig;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,4 +60,23 @@ public class FileManage {
     public boolean checkFileExist(String fileName, String fileAddress){
         return programCRepository.existsByFileName(fileName);
     }
+
+    public boolean uploadFile(MultipartFile file) {
+        String fileName = file.getOriginalFilename();
+        System.out.println("上传的文件名为：" + fileName);
+        String suffixName = fileName.substring(fileName.lastIndexOf("."));
+        System.out.println("上传的后缀名为：" + suffixName);
+        String filePath = GeneralConfig.getFileStorageAddress();
+        File dest = new File(filePath + fileName);
+        try {
+            file.transferTo(dest);
+            return true;
+        } catch(IllegalStateException e) {
+            e.printStackTrace();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }
